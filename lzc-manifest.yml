@@ -16,18 +16,16 @@ application:
       port: 7080
       service: zircon
       description: Web admin panel
-
 services:
   zircon:
-    # upstream: ghcr.io/dockers-x/zircon:v1.14.0 (built from upstream release assets)
-    image: ghcr.1ms.run/dockers-x/zircon:v1.14.0@sha256:e81bfbeabb6daeacc1910200523cf5500083c938fcec22d56605e901590483de
+    # upstream: ghcr.io/dockers-x/zircon:v1.14.0
+    image: ghcr.1ms.run/dockers-x/zircon:v1.14.0
     environment:
       - TZ=Asia/Shanghai
     binds:
       - /lzcapp/var/zircon:/zircon/datas
     # No healthcheck: upstream .NET server has no HTTP health endpoint.
-
-usage: |
+usage: |-
   皓石传奇三（Zircon Mir3 Server）在后台运行一个传奇三游戏服务器：包含战士、法师、道士、刺客
   四个职业，平均每职业 38 个技能，地图道具丰富，可升至 100 级，技能可修炼至 6 级、装备可精炼。
 
