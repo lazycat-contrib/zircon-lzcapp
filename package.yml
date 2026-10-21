@@ -1,0 +1,20 @@
+package: community.lazycat.app.zircon
+version: 1.14.0
+name: Zircon Mir3 Server
+description: "Open-source server for Mir3 (Legend of Mir 3), cross-platform and Docker-deployable"
+author: raphaelcheung
+license: AGPL-3.0
+homepage: https://github.com/raphaelcheung/zircon-legend-server
+min_os_version: 1.5.0
+
+permissions:
+  required:
+    - net.internet
+
+locales:
+  zh:
+    name: "皓石传奇三"
+    description: "皓石传奇三开源服务器端：四职业、地图道具齐全，支持 100 级与技能/装备精炼；跨平台可 Docker 部署，仅供学习游戏技术使用"
+  en:
+    name: "Zircon Mir3 Server"
+    description: "Open-source Mir3 (Legend of Mir 3) game server with four classes, maps and items; cross-platform and Docker-deployable"

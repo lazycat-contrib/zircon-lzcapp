@@ -1,0 +1,44 @@
+application:
+  subdomain: zircon
+  background_task: true
+  multi_instance: false
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: file:///lzcapp/pkg/content/index.html
+  ingress:
+    - protocol: tcp
+      port: 7000
+      service: zircon
+      description: Game connection port
+    - protocol: tcp
+      port: 7080
+      service: zircon
+      description: Web admin panel
+
+services:
+  zircon:
+    # upstream: ghcr.io/dockers-x/zircon:v1.14.0 (built from upstream release assets)
+    image: ghcr.1ms.run/dockers-x/zircon:v1.14.0@sha256:e81bfbeabb6daeacc1910200523cf5500083c938fcec22d56605e901590483de
+    environment:
+      - TZ=Asia/Shanghai
+    binds:
+      - /lzcapp/var/zircon:/zircon/datas
+    # No healthcheck: upstream .NET server has no HTTP health endpoint.
+
+usage: |
+  皓石传奇三（Zircon Mir3 Server）在后台运行一个传奇三游戏服务器：包含战士、法师、道士、刺客
+  四个职业，平均每职业 38 个技能，地图道具丰富，可升至 100 级，技能可修炼至 6 级、装备可精炼。
+
+  连接方式：
+  - 游戏客户端：连接「主机名:7000」
+  - Web 管理后台：浏览器打开「主机名:7080」
+
+  ⚠️ 首次使用前必须准备运行数据：上游把地图 / 运营数据（约 800MB）放在百度网盘和 QQ 群文件中，
+  不在应用镜像内。请自行下载解压后，把 Map 目录与配置文件放到本应用的数据目录中，
+  应用入口页有下载与放置说明。
+
+  内置测试账号：zrf@zrf.zrf 与 raphael@gm.gm（管理员），密码均为 123456。
+
+  上游声明：本项目仅供学习游戏技术，禁止商用及非法用途。

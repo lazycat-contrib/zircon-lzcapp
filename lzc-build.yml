@@ -1,0 +1,11 @@
+manifest: ./lzc-manifest.yml
+pkgout: ./dist
+icon: ./icon.png
+contentdir: ./content
+
+compose_override:
+  services:
+    zircon:
+      security_opt:
+        - no-new-privileges:true
+      restart: unless-stopped

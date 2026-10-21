@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0d0805">
+    <meta name="description" content="皓石传奇三（Zircon Mir3 Server）连接信息与运行数据准备说明。">
+    <title>皓石传奇三 · Zircon Mir3 Server</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --canvas: #0d0805;
+        --surface: #1a120b;
+        --surface-raised: #241a10;
+        --ink: #f0e6d8;
+        --muted: #b3a08a;
+        --gold: #e0b256;
+        --line: rgba(224, 178, 86, 0.28);
+        --radius: 18px;
+        --page: min(1000px, calc(100% - 40px));
+        font-family: "PingFang SC", "Noto Sans CJK SC", "Microsoft YaHei", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      * { box-sizing: border-box; }
+      html { background: var(--canvas); scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: radial-gradient(120% 70% at 50% -10%, #2b1d10 0%, transparent 60%), var(--canvas);
+        line-height: 1.65;
+      }
+      main { width: var(--page); margin: 0 auto; padding: 52px 0 72px; display: grid; gap: 20px; }
+
+      .hero {
+        padding: 34px 32px;
+        border: 1px solid var(--line);
+        border-radius: 26px;
+        background: linear-gradient(160deg, var(--surface-raised), var(--surface));
+        display: grid;
+        gap: 12px;
+      }
+      .eyebrow { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+      h1 { margin: 0; font-size: clamp(26px, 5vw, 40px); letter-spacing: 0.02em; }
+      .hero p { margin: 0; color: var(--muted); max-width: 64ch; }
+
+      .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+      .card {
+        padding: 24px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--surface);
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+      .card h2 { margin: 0; font-size: 15px; letter-spacing: 0.04em; color: var(--gold); font-weight: 600; }
+
+      .addr {
+        padding: 16px 18px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--surface-raised);
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 17px;
+        word-break: break-all;
+        cursor: pointer;
+        transition: border-color 160ms ease, transform 160ms ease;
+      }
+      .addr:hover { border-color: var(--gold); transform: translateY(-1px); }
+      .addr small { display: block; margin-top: 4px; color: var(--muted); font-family: inherit; font-size: 12px; }
+
+      .warn {
+        border-color: rgba(224, 120, 86, 0.45);
+        background: linear-gradient(160deg, #2a1710, var(--surface));
+      }
+      .warn h2 { color: #f0a07a; }
+      ol { margin: 0; padding-left: 20px; color: var(--muted); }
+      ol li + li { margin-top: 8px; }
+      a { color: var(--gold); }
+      code {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 0.92em; padding: 1px 6px; border-radius: 6px; background: #2b1d10; color: var(--ink);
+      }
+      footer { color: var(--muted); font-size: 13px; text-align: center; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <span class="eyebrow">Zircon Mir3 Server · v1.14.0</span>
+        <h1>皓石传奇三</h1>
+        <p>
+          开源的传奇三（Mir3）服务器端，基于吉米 2019 年流传的 Zircon 版本发展而来。
+          含战士、法师、道士、刺客四个职业，平均每职业 38 个技能，可升至 100 级，
+          技能可修炼至 6 级、装备可精炼。
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>连接地址</h2>
+          <div class="addr" data-port="7000">加载中…<small>点击复制游戏连接地址</small></div>
+          <div class="addr" data-port="7080">加载中…<small>点击复制 Web 管理后台地址</small></div>
+          <p style="margin:0;color:var(--muted);font-size:13px">
+            游戏客户端填「主机名:7000」；管理后台用浏览器打开「主机名:7080」。
+          </p>
+        </article>
+
+        <article class="card warn">
+          <h2>首次使用前必须准备运行数据</h2>
+          <ol>
+            <li>上游把地图 / 运营数据（约 <code>800MB</code>）放在百度网盘和 QQ 群文件中，<strong>不在镜像内</strong>。</li>
+            <li>下载后解压，把 <code>Map</code> 目录和各项数据文件放入本应用的数据目录。</li>
+            <li>配置文件 <code>Server.ini</code> 可直接用本应用提供的默认版本，再按需修改服务器地址与端口。</li>
+          </ol>
+          <p style="margin:0;color:var(--muted);font-size:13px">
+            数据下载链接见
+            <a href="https://github.com/raphaelcheung/zircon-legend-server" target="_blank" rel="noreferrer">上游 README</a>。
+            内置测试账号：<code>zrf@zrf.zrf</code> 与 <code>raphael@gm.gm</code>（管理员），密码均为 <code>123456</code>。
+          </p>
+        </article>
+      </section>
+
+      <footer>
+        仅供学习游戏技术，禁止商用及非法用途 ·
+        <a href="https://github.com/raphaelcheung/zircon-legend-server" target="_blank" rel="noreferrer">上游项目</a>
+      </footer>
+    </main>
+
+    <script>
+      const hostname = window.location.hostname || "zircon.你的懒猫地址";
+
+      document.querySelectorAll(".addr").forEach((el) => {
+        const value = `${hostname}:${el.dataset.port}`;
+        const hint = el.querySelector("small");
+        el.childNodes[0].nodeValue = value;
+
+        el.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(value);
+            hint.textContent = "已复制";
+          } catch {
+            hint.textContent = "请长按或选中地址复制";
+          }
+          window.setTimeout(() => {
+            hint.textContent = el.dataset.port === "7000"
+              ? "点击复制游戏连接地址"
+              : "点击复制 Web 管理后台地址";
+          }, 1800);
+        });
+      });
+    </script>
+  </body>
+</html>
